@@ -1,21 +1,23 @@
 #CLI Mental Math Game (Main)
 
-from CLI_mental_math import *
+from mental_math_game import MentalMathGame
 
 def main() -> None:
     
     print("Let's Practice your math skill\n"
-              "How to play? just type the related answer to the question:)")
+          "How to play? just type the related answer to the question:)")
 
     is_playing: bool = True
     
     while is_playing:
         
-        choosen_operation: str = determine_the_operation() 
-        choosen_difficulty: str = determine_the_difficulty()
-        choosen_amount_of_question: int = determine_how_many_question()
-        timer()
-        start_practicing(choosen_operation, choosen_amount_of_question, choosen_difficulty)
+        game: MentalMathGame = MentalMathGame()
+        game.determine_the_operation() 
+        game.determine_the_difficulty()
+        game.determine_how_many_question()
+        game.timer()
+        game.start_practicing()
+        game.count_score()
         
         while True:
             practice_again: str = input("Would you like to practice again? (Yes/No)\n>").title()
@@ -31,6 +33,6 @@ def main() -> None:
             
             else:
                 print("Your choice of practicing again is not recognized. Please to try again!\n")
-
+ 
 if __name__ == "__main__":
     main()
